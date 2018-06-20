@@ -145,29 +145,3 @@ alias clipssh="clip ~/.ssh/id_rsa.pub"
 alias clipwd="pwd | cb"
 # Copy most recent command in bash history
 alias cliphs="cat $HISTFILE | tail -n 1 | cb"
-
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-eval "$(~/CMR/Superproject/scripts/cmr eval)"
-
-# tesseract tessdata path
-# export TESSDATA_PREFIX="$HOME/tesseract-ocr"
-
-# tensorflow path
-export TENSORFLOW="$HOME/anaconda3/lib/python3.6/site-packages/tensorflow"
-
-# File aliases
-alias image_cap='cd ~/Documents/Image-Captioning'
-alias keyboard_rec='cd ~/cmr/Superproject/keyboard_recog'
-alias tex='cd ~/Documents/CS3110/3110-final && s'
-
-# Conda env aliases
-alias py27='source activate py27'
-alias endenv='source deactivate'
-
-# tensorflow python env
-alias tensorflow='cd ~/Documents/Machine_Learning/tensorflow && source bin/activate'
-
-# Deep Learning AMI alias
-alias aws='ssh ubuntu@ec2-52-90-55-220.compute-1.amazonaws.com'
