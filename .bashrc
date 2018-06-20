@@ -8,7 +8,7 @@ export EDITOR='vim'
 
 # If ssh session, include hostname in prompt
 if [[ -n "$SSH_CLIENT" ]] || [[ -n "$SSH_TTY" ]]; then
-    export PS1="\[\033[36m\]\u\[\033[1;31m\]@\[\033[0;32m\]\h\[\033[m\]:\[\033[33m\]\w\[\033[m\]> "
+    export PS1="\[\033[36m\]\u\[\033[1;31m\]@\[\033[0;32m\]\h\[\033[m\]:\[\033[33m\]\w\[\033[m\W$(__git_ps1 " (%s)")]> "
 else
     export PS1="\[\033[36m\]\u\[\033[1;31m\]\[\033[m\]:\[\033[33m\]\w\[\033[m\]> "
 fi
