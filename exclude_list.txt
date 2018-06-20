@@ -1,0 +1,5 @@
+README.md
+bootstrap.sh
+exclude_list.txt
+.git
+.DS_Store
