@@ -6,13 +6,25 @@ fi
 # Make default editor vim
 export EDITOR='vim'
 
+# Git goodness
+source ~/.git-completion.bash
+source ~/.git-prompt.sh
+
+CYAN='\[\033[36m\]'
+YELLOW='\[\033[33m\]'
+RED='\[\033[1;31m\]'
+WHITE='\[\033[m\]'
+
 # If ssh session, include hostname in prompt
 if [[ -n "$SSH_CLIENT" ]] || [[ -n "$SSH_TTY" ]]; then
-    export PS1="\[\033[36m\]\u\[\033[1;31m\]@\[\033[0;32m\]\h\[\033[m\]:\[\033[33m\]\w\[\033[m\W$(__git_ps1 " (%s)")]> "
+    export PS1="\[\033[36m\]\u\[\033[1;31m\]@\[\033[0;32m\]\h\[\033[m\]:\[\033[33m\]\w\[\033[m\]> "
 else
-    export PS1="\[\033[36m\]\u\[\033[1;31m\]\[\033[m\]:\[\033[33m\]\w\[\033[m\]> "
+    export PS1="$CYAN\u$WHITE:$YELLOW\w$RED\$(__git_ps1)$WHITE> "
 fi
 export CLICOLOR=1
+
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWCOLORHINTS="true"
 
 
 # OS Specific Aliases
@@ -92,10 +104,6 @@ alias push="git push"
 alias pull="git pull"
 alias out="logout"
 alias gid="git diff"
-
-# Git goodness
-source ~/.git-completion.bash
-source ~/.git-prompt.sh
 
 #
 # Thank you: http://madebynathan.com/2011/10/04/a-nicer-way-to-use-xclip/
