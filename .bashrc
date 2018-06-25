@@ -26,7 +26,7 @@ export CLICOLOR=1
 
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWCOLORHINTS="true"
-
+export GIT_PS1_STATESEPARATOR=""
 
 # OS Specific Aliases
 OS=$(uname)
@@ -154,3 +154,7 @@ alias clipssh="clip ~/.ssh/id_rsa.pub"
 alias clipwd="pwd | cb"
 # Copy most recent command in bash history
 alias cliphs="cat $HISTFILE | tail -n 1 | cb"
+
+# Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
+[ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f 2-)" ssh scp ftp lftp sftp
+
