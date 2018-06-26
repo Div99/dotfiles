@@ -23,3 +23,18 @@ source dotfiles/bootstrap.sh
 ```
 
 To update your local repository with any changes I've made, just source the bootstrap script again.
+
+
+### Using Vim with tmux
+
+Mouse scrolling is enabled by default.
+
+For Mac:
+  Select text with `fn` key pressed to do normal copy with Cmd + c.
+  (Alternatively select text with `fn` + `Cmd` pressed if above not working)
+
+  For copying a block of text with vertical tmux split, select text with
+  `fn` + `alt` pressed to select a rectangular block.
+
+  Paste should be working as normal. (Auto-indent is turned off for the pasted text
+  using [vim-bracketed-paste](https://github.com/ConradIrwin/vim-bracketed-paste))

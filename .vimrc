@@ -16,9 +16,9 @@ set mousehide                   " hide mouse pointer when characters are typed
 set history=50                  " keep 50 lines of command line history
 
 " In many terminal emulators the mouse works just fine, thus enable it.
-"if has('mouse')
-"    set mouse=a
-"endif
+if has('mouse')
+    set mouse=a
+endif
 
 " Color and Style
 if &t_Co > 2 || has("gui_running")
@@ -46,6 +46,30 @@ set incsearch                   " show matches while typing pattern
 " Spell Checking
 " Use ':set spell' and ':set nospell' to turn spell checking on/off
 set spelllang=en_us
+
+" Paste with auto-indent off
+" Adapted from https://github.com/ConradIrwin/vim-bracketed-paste
+if exists("g:loaded_bracketed_paste")
+  finish
+endif
+let g:loaded_bracketed_paste = 1
+
+let &t_ti .= "\<Esc>[?2004h"
+let &t_te = "\e[?2004l" . &t_te
+
+function! XTermPasteBegin(ret)
+  set pastetoggle=<f29>
+  set paste
+  return a:ret
+endfunction
+
+execute "set <f28>=\<Esc>[200~"
+execute "set <f29>=\<Esc>[201~"
+map <expr> <f28> XTermPasteBegin("i")
+imap <expr> <f28> XTermPasteBegin("")
+vmap <expr> <f28> XTermPasteBegin("c")
+cmap <f28> <nop>
+cmap <f29> <nop>
 
 " Scrolling and Mouse Control
 set scrolloff=10                " keep at least x lines above/below cursor if possible
