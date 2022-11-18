@@ -16,5 +16,8 @@ source ~/.bashrc
 echo -e "\nInstalling fonts..."
 source install-fonts.sh
 
+#Install Tmux Plugin Manager 
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 cd "$OLDPWD"
 export OLDPWD="$OLDPWD_backup"
